@@ -1,0 +1,46 @@
+{
+  "name": "mawwany-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/is-prop-valid": "latest",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "crypto": "latest",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "framer-motion": "latest",
+    "jsdom": "^22.1.0",
+    "lucide-react": "^0.454.0",
+    "next": "15.2.4",
+    "nodemailer": "latest",
+    "postcss": "8.4.27",
+    "qrcode.react": "latest",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-intersection-observer": "latest",
+    "react-qr-reader": "latest",
+    "rss-to-json": "^2.1.1",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss": "3.3.3",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "postcss": "^8.5",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,682 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add these CSS variables and cross-browser compatibility rules at the top of the file */
+:root {
+  --mawwany-gold: 196, 164, 132;
+  --mawwany-navy: 27, 45, 63;
+  --mawwany-blue: 97, 164, 211;
+  --mawwany-gray: 245, 245, 245;
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: var(--mawwany-navy);
+  --vh: 1vh;
+}
+
+/* Cross-browser compatibility */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for iOS 100vh issue */
+.h-screen {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.min-h-screen {
+  min-height: 100vh; /* Fallback */
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Improve touch targets for mobile */
+.touch-device button,
+.touch-device a,
+.touch-device input[type="button"],
+.touch-device input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Add smooth scrolling but respect user preferences */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Improve form elements on iOS */
+.os-ios input,
+.os-ios textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+/* Fix for Safari overflow issues */
+.browser-safari .overflow-auto,
+.browser-safari .overflow-y-auto,
+.browser-safari .overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize animations for mobile */
+@media (max-width: 768px) {
+  .animate-in {
+    animation-duration: 0.15s;
+  }
+}
+
+/* Add touch-specific class for better interactions */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* iOS-specific menu fixes */
+@supports (-webkit-touch-callout: none) {
+  .ios-menu-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ios-menu {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ios-menu > a,
+  .ios-menu > div {
+    padding: 12px 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .ios-menu-item {
+    padding: 12px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ios-dropdown {
+    padding: 0 0 0 16px !important;
+    margin: 0 !important;
+  }
+
+  .ios-dropdown > a {
+    padding: 8px 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* iOS Header optimizations */
+  .ios-header-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ios-header-menu {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ios-header-item {
+    padding: 8px 0 !important; /* Reduced from 12px */
+    margin: 0 !important;
+    color: rgb(var(--mawwany-gold)) !important;
+  }
+
+  .ios-header-dropdown {
+    padding: 0 0 0 12px !important; /* Reduced from 16px */
+    margin: 0 !important;
+  }
+
+  .ios-header-dropdown-item {
+    padding: 4px 0 !important; /* Reduced from 8px */
+    margin: 0 !important;
+    color: rgb(var(--mawwany-gold)) !important;
+  }
+
+  /* QR code container fix for iOS */
+  .qr-code-container {
+    width: 128px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  .qr-code-container > div {
+    width: 128px !important;
+    height: 128px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  /* Add these new iOS-specific QR code styles */
+  .ios-device .ios-qr-code {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 90px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ios-device .ios-qr-code > div {
+    width: 90px !important;
+    height: 90px !important;
+    margin: 0 !important;
+    padding: 2px !important;
+  }
+
+  .ios-device .ios-qr-code p {
+    font-size: 8px !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+
+  .ios-device .ios-contact-header {
+    position: relative !important;
+    padding-right: 95px !important;
+  }
+
+  /* Map optimization for iOS */
+  .ios-map {
+    min-height: 250px !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0.75rem !important;
+  }
+
+  iframe {
+    opacity: 1 !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  /* iOS Footer Optimizations */
+  .ios-footer-grid {
+    row-gap: 0.5rem !important;
+  }
+
+  .ios-footer-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .ios-footer-section h4 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .ios-footer-links {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ios-footer-links li {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ios-footer-links li a,
+  .ios-footer-links li button {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    min-height: 30px !important;
+  }
+
+  /* Additional iOS mobile-specific footer adjustments */
+  @media (max-width: 767px) {
+    .ios-footer-grid {
+      row-gap: 0.25rem !important;
+    }
+
+    .ios-footer-section {
+      margin-bottom: 0.25rem !important;
+    }
+
+    .ios-footer-links.space-y-1 > * + * {
+      margin-top: 0.125rem !important;
+    }
+
+    .ios-footer-links li a,
+    .ios-footer-links li button {
+      padding-top: 0.125rem !important;
+      padding-bottom: 0.125rem !important;
+      min-height: 24px !important;
+    }
+
+    /* Mobile specific header adjustments */
+    .ios-header-item {
+      padding: 6px 0 !important; /* Even more reduced on mobile */
+    }
+
+    .ios-header-dropdown {
+      padding: 0 0 0 8px !important; /* Even more reduced on mobile */
+    }
+
+    .ios-header-dropdown-item {
+      padding: 3px 0 !important; /* Even more reduced on mobile */
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  font-family: var(--font-montserrat);
+}
+
+.bg-mesh-gradient {
+  background-color: rgb(var(--mawwany-navy));
+  background-image: radial-gradient(at 47% 33%, rgba(97, 164, 211, 0.25) 0, transparent 59%),
+    radial-gradient(at 82% 65%, rgba(97, 164, 211, 0.2) 0, transparent 55%);
+  animation: gradientShift 15s ease infinite;
+  background-size: 200% 200%;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-mesh-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(97, 164, 211, 0.1) 0%, transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.bg-gold-mesh {
+  background-color: rgba(var(--mawwany-gold), 0.1);
+  background-image: radial-gradient(at 47% 33%, rgba(97, 164, 211, 0.15) 0, transparent 59%),
+    radial-gradient(at 82% 65%, rgba(97, 164, 211, 0.1) 0, transparent 55%);
+}
+
+.text-mawwany-gold {
+  color: rgb(var(--mawwany-gold));
+}
+
+.text-mawwany-navy {
+  color: rgb(var(--mawwany-navy));
+}
+
+.bg-mawwany-gold {
+  background-color: rgb(var(--mawwany-gold));
+}
+
+.bg-mawwany-navy {
+  background-color: rgb(var(--mawwany-navy));
+}
+
+.bg-mawwany-blue {
+  background-color: #61a4d3;
+}
+
+.border-mawwany-gold {
+  border-color: rgb(var(--mawwany-gold));
+}
+
+.border-mawwany-gold-20 {
+  border-color: rgba(var(--mawwany-gold), 0.2);
+}
+
+.rounded-frame {
+  @apply rounded-xl border-2 border-mawwany-gold;
+}
+
+.logo-text {
+  font-family: var(--font-montserrat);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.video-smooth {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Add iOS-specific video playback optimizations */
+@supports (-webkit-touch-callout: none) {
+  video {
+    /* Optimize video playback on iOS */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    /* Prevent flickering on iOS */
+    will-change: transform;
+  }
+}
+
+.animate-in {
+  animation: slideDown 0.2s ease-out;
+}
+
+.slide-in-from-top-2 {
+  animation-name: slideDown;
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.pt-screen {
+  padding-top: 100vh;
+}
+
+.service-card {
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Safe area insets for iOS */
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pl-safe {
+  padding-left: env(safe-area-inset-left);
+}
+
+.pr-safe {
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Footer mobile optimizations */
+@media (max-width: 768px) {
+  .grid-cols-2 > * {
+    padding: 0.5rem !important;
+  }
+
+  .footer-section {
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Add this to the end of the file for additional iOS fixes */
+.ios-device .ios-menu-container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.ios-device .ios-menu > * + * {
+  border-top: 1px solid rgba(var(--mawwany-gold), 0.1);
+}
+
+/* Fix for iOS iframe loading */
+.ios-device iframe {
+  opacity: 0;
+}
+
+.ios-device iframe.loaded {
+  opacity: 1;
+}
+
+/* iOS Footer specific styles for all iOS devices */
+.ios-device .ios-footer-grid {
+  row-gap: 0.5rem !important;
+}
+
+.ios-device .ios-footer-section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.ios-device .ios-footer-section h4 {
+  margin-bottom: 0.5rem !important;
+}
+
+.ios-device .ios-footer-links {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.ios-device .ios-footer-links li {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.ios-device .ios-footer-links li a,
+.ios-device .ios-footer-links li button {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  min-height: 30px !important;
+}
+
+/* Additional iOS mobile-specific footer adjustments */
+@media (max-width: 767px) {
+  .ios-device .ios-footer-grid {
+    row-gap: 0.25rem !important;
+  }
+
+  .ios-device .ios-footer-section {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .ios-device .ios-footer-links.space-y-1 > * + * {
+    margin-top: 0.125rem !important;
+  }
+
+  .ios-device .ios-footer-links li a,
+  .ios-device .ios-footer-links li button {
+    padding-top: 0.125rem !important;
+    padding-bottom: 0.125rem !important;
+    min-height: 24px !important;
+  }
+}
+
+/* iOS Header specific styles for all iOS devices */
+.ios-device .ios-header-item {
+  padding: 6px 0 !important; /* Reduced from 8px */
+  margin: 0 !important;
+  color: rgb(var(--mawwany-gold)) !important;
+}
+
+.ios-device .ios-header-dropdown {
+  padding: 0 0 0 8px !important; /* Reduced from 12px */
+  margin: 0 !important;
+}
+
+.ios-device .ios-header-dropdown-item {
+  padding: 3px 0 !important; /* Reduced from 4px */
+  margin: 0 !important;
+  color: rgb(var(--mawwany-gold)) !important;
+}
+
+/* More aggressive optimization for mobile */
+@media (max-width: 767px) {
+  .ios-device .ios-header-item {
+    padding: 4px 0 !important; /* Even more reduced from 6px */
+    min-height: 28px !important; /* Added min-height for better touch targets */
+  }
+
+  .ios-device .ios-header-dropdown {
+    padding: 0 0 0 6px !important; /* Reduced indentation on mobile from 8px */
+    margin-top: -2px !important; /* Reduce gap between parent item and dropdown */
+  }
+
+  .ios-device .ios-header-dropdown-item {
+    padding: 2px 0 !important; /* Even more reduced from 3px */
+    min-height: 22px !important; /* Smaller touch target but still usable */
+    line-height: 1.2 !important; /* Tighter line height */
+  }
+
+  /* Add reduced spacing between menu items */
+  .ios-device .ios-menu > * {
+    margin-bottom: 0 !important;
+    border-bottom-width: 1px !important;
+    border-color: rgba(var(--mawwany-gold), 0.05) !important;
+  }
+
+  /* Reduced line separator */
+  .ios-device .ios-menu > * + * {
+    border-top-width: 1px !important;
+    border-color: rgba(var(--mawwany-gold), 0.05) !important;
+  }
+}
+
+/* Add these new iOS mobile-specific menu classes at the end of the file */
+.ios-device .ios-mobile-menu {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+.ios-device .ios-mobile-item {
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  min-height: 26px !important;
+}
+
+.ios-device .ios-mobile-dropdown {
+  padding-left: 6px !important;
+  margin-top: -2px !important;
+  margin-bottom: 2px !important;
+}
+
+.ios-device .ios-mobile-dropdown-item {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 20px !important;
+}
+
+/* Fix for dropdown alignment */
+.ios-device .relative {
+  position: relative !important;
+}
+
+/* Ensure consistent text color on iOS */
+.ios-device .ios-header-item,
+.ios-device .ios-header-dropdown-item,
+.ios-device .ios-mobile-item,
+.ios-device .ios-mobile-dropdown-item {
+  color: rgb(var(--mawwany-gold)) !important;
+}
+
+/* Fix dividers between menu items on iOS */
+.ios-device .ios-menu > *:not(:last-child) {
+  border-bottom: 1px solid rgba(var(--mawwany-gold), 0.05);
+}
+
+/* Add responsive adjustments for iOS mobile screens */
+@media (max-width: 767px) {
+  .ios-device .ios-qr-code {
+    width: 70px !important;
+  }
+
+  .ios-device .ios-qr-code > div {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  .ios-device .ios-contact-header {
+    padding-right: 75px !important;
+  }
+}
